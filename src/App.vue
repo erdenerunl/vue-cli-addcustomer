@@ -2,26 +2,26 @@
   <div>
     <h1>Customer</h1>
     <hr />
-    <div class="container">
+    <div class="container d-flex  flex-column align-items-center">
       <input
         type="text"
-        class="form-group"
+        class="form-group w-50 "
         placeholder="First name..."
         v-model="formData.firstName"
       />
       <input
         type="text"
-        class="form-group"
+        class="form-group w-50"
         placeholder="Last name..."
         v-model="formData.lastName"
       />
       <input
         type="text"
-        class="form-group"
+        class="form-group w-50"
         placeholder="Email..."
         v-model="formData.email"
       />
-      <button class="btn btn-primary" :class="addDisabled" @click="addCustomer">Add Customer</button>
+      <button class="btn btn-primary w-50" :class="addDisabled" @click="addCustomer">Add Customer</button>
     </div>
     <customer-list :customers="customers" />
   </div>
@@ -58,16 +58,16 @@ export default {
         id: this.customers.length + 1,
         ...this.formData,
       });
-      console.log(this.customers);
+      
       this.clearForm();
     },
   },
   computed : {
     addDisabled(){
       return {
-        'disabled' : this.customers.firstName === '' || 
-        this.customers.lastName === '' || 
-        this.customers.email === ''
+        'disabled' : this.formData.firstName === '' || 
+        this.formData.lastName === '' || 
+        this.formData.email === ''
       }
     }
   }
